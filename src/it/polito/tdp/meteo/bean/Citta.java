@@ -16,6 +16,10 @@ public class Citta {
 		this.nome = nome;
 		this.rilevamenti = rilevamenti;
 	}
+	
+	public void add(Rilevamento r) {
+		rilevamenti.add(r);
+	}
 
 	public String getNome() {
 		return nome;
@@ -70,9 +74,18 @@ public class Citta {
 		return true;
 	}
 
+
 	@Override
 	public String toString() {
 		return nome;
+	}
+	
+	public String stampaRilevamenti() {
+		String ris="";
+		for(Rilevamento r : rilevamenti) {
+			ris += r.getUmidita()+"\n";
+		}
+		return nome+ris;
 	}
 	
 }
