@@ -6,7 +6,8 @@ public class Citta {
 
 	private String nome;
 	private List<Rilevamento> rilevamenti;
-	private int counter = 0;
+	private int counterTotali;
+	private int counterConsecutivi;
 	
 	public Citta(String nome) {
 		this.nome = nome;
@@ -15,8 +16,20 @@ public class Citta {
 	public Citta(String nome, List<Rilevamento> rilevamenti) {
 		this.nome = nome;
 		this.rilevamenti = rilevamenti;
+		this.counterConsecutivi=0;
+		this.counterTotali=0;
 	}
 	
+	
+	
+	public int getCounterConsecutivi() {
+		return counterConsecutivi;
+	}
+
+	public void setCounterConsecutivi(int counterConsecutivi) {
+		this.counterConsecutivi = counterConsecutivi;
+	}
+
 	public void add(Rilevamento r) {
 		rilevamenti.add(r);
 	}
@@ -37,17 +50,30 @@ public class Citta {
 		this.rilevamenti = rilevamenti;
 	}
 
-	public int getCounter() {
-		return counter;
+	public int getCounterTotali() {
+		return counterTotali;
 	}
 
-	public void setCounter(int counter) {
-		this.counter = counter;
+	public void setCounterTotali(int counter) {
+		this.counterTotali = counter;
 	}
 	
 	public void increaseCounter() {
-		this.counter += 1;
+		this.counterConsecutivi += 1;
 	}
+	
+	public void decreaseCounter() {
+		this.counterConsecutivi -= 1;
+	}
+	
+	public void increaseCounterTotali() {
+		this.counterTotali += 1;
+	}
+	
+	public void decreaseCounterTotali() {
+		this.counterTotali -= 1;
+	}
+
 
 	@Override
 	public int hashCode() {
@@ -87,5 +113,16 @@ public class Citta {
 		}
 		return nome+ris;
 	}
+	
+	public int getUmiditaPerGiorno(int mese, int giorno) {
+		int umidita = 0;
+		for(Rilevamento r : rilevamenti) {
+			if(r.getData().getMonthValue()==mese && r.getData().getDayOfMonth()==giorno)
+				umidita = r.getUmidita();
+		}
+		return umidita;
+	}
+
+	
 	
 }

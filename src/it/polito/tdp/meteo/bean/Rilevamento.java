@@ -1,14 +1,15 @@
 package it.polito.tdp.meteo.bean;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Rilevamento {
 
 	private String localita;
-	private Date data;
+	private LocalDate data;
 	private int umidita;
 
-	public Rilevamento(String localita, Date data, int umidita) {
+	public Rilevamento(String localita, LocalDate data, int umidita) {
 		super();
 		this.localita = localita;
 		this.data = data;
@@ -23,11 +24,11 @@ public class Rilevamento {
 		this.localita = localita;
 	}
 
-	public Date getData() {
+	public LocalDate getData() {
 		return data;
 	}
 
-	public void setData(Date data) {
+	public void setData(LocalDate data) {
 		this.data = data;
 	}
 
